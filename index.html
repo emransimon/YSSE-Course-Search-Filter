@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="YSSE Course Search & Filter System - Discover industry-leading courses across Web Development, Programming, Graphic Design, Digital Marketing, and Data Science. Youth School for Social Entrepreneurs (YSSE) IT Wing.">
+  <title>YSSE Courses | Stage of Innovation</title>
+
+  <!-- Google Fonts: Space Grotesk (Headings) & Plus Jakarta Sans (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-announcement">
+    <div class="announcement-container">
+      <span class="announcement-tag">YSSE GLOBAL</span>
+      <span class="announcement-text">Stage of Innovation &bull; Empowering Youth through Tech &amp; Social
+        Entrepreneurship</span>
+      <a href="https://ysseglobal.org/" target="_blank" rel="noopener noreferrer" class="announcement-link">Visit Main
+        Website &rarr;</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#" class="brand-link" aria-label="YSSE Courses Home">
+        <div class="brand-logo-mark">
+          <span class="brand-logo-letter">Y</span>
+          <span class="brand-logo-dot"></span>
+        </div>
+        <div class="brand-text-group">
+          <span class="brand-title">YSSE <span class="brand-accent">Academy</span></span>
+          <span class="brand-sub">Stage of Innovation</span>
+        </div>
+      </a>
+
+      <nav class="site-nav" aria-label="Main Navigation">
+        <div class="nav-badges">
+          <span class="dept-badge">IT Department</span>
+          <span class="wing-badge">Web Dev &amp; CMS Wing</span>
+        </div>
+        <button type="button" id="savedFilterViewBtn" class="saved-counter-btn" title="View Bookmarked Courses">
+          <span class="bookmark-icon" aria-hidden="true">&#9733;</span>
+          <span>Saved (<span id="savedCount">0</span>)</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-bg-shapes" aria-hidden="true">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+    </div>
+
+    <div class="hero-container">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        <span>YSSE IT Wing &bull; Course Catalogue</span>
+      </div>
+
+      <h1 class="hero-title">
+        Explore Our <span class="text-gradient">Courses</span>
+      </h1>
+
+      <p class="hero-description">
+        Discover industry-aligned courses designed to elevate your technical and creative skills. Search by keyword or
+        filter by category and skill level to find your ideal learning path.
+      </p>
+
+      <!-- Interactive Quick Stats Bar -->
+      <div class="hero-stats-bar">
+        <div class="stat-item">
+          <span class="stat-number">15+</span>
+          <span class="stat-label">Practical Courses</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-number">5</span>
+          <span class="stat-label">Specialized Tracks</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Skill Levels</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">Open Access</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Area -->
+  <main class="main-content">
+    <div class="content-container">
+
+      <!-- Interactive Quick Category Pill Tabs -->
+      <section class="category-pills-bar" aria-label="Quick Category Filter Tabs">
+        <div class="pills-scroll-wrapper">
+          <button type="button" class="category-pill active" data-category="all">
+            <span class="pill-icon">&#127760;</span> All Tracks
+          </button>
+          <button type="button" class="category-pill" data-category="Web Development">
+            <span class="pill-icon">&#128187;</span> Web Development
+          </button>
+          <button type="button" class="category-pill" data-category="Programming">
+            <span class="pill-icon">&#9881;</span> Programming
+          </button>
+          <button type="button" class="category-pill" data-category="Graphic Design">
+            <span class="pill-icon">&#127912;</span> Graphic Design
+          </button>
+          <button type="button" class="category-pill" data-category="Digital Marketing">
+            <span class="pill-icon">&#128227;</span> Digital Marketing
+          </button>
+          <button type="button" class="category-pill" data-category="Data Science">
+            <span class="pill-icon">&#128202;</span> Data Science
+          </button>
+        </div>
+      </section>
+
+      <!-- Search and Filter Controls Panel -->
+      <section class="controls-panel" aria-label="Course Search and Filter Controls">
+        <form id="filterForm" class="filter-form" onsubmit="event.preventDefault();">
+
+          <!-- Search Input Control -->
+          <div class="control-group search-group">
+            <label for="searchInput" class="control-label">Search Courses</label>
+            <div class="input-wrapper">
+              <span class="input-icon" aria-hidden="true">&#128269;</span>
+              <input type="text" id="searchInput" class="search-input"
+                placeholder="Search courses by name or keyword..." autocomplete="off">
+              <button type="button" id="clearSearchBtn" class="search-clear-btn hidden" aria-label="Clear search input"
+                title="Clear search">&times;</button>
+            </div>
+
+            <!-- Quick Suggestion Chips -->
+            <div class="quick-keywords" aria-label="Quick search tags">
+              <span class="quick-keywords-label">Popular:</span>
+              <button type="button" class="keyword-chip" data-term="Python">Python</button>
+              <button type="button" class="keyword-chip" data-term="Web">Web</button>
+              <button type="button" class="keyword-chip" data-term="Figma">Figma</button>
+              <button type="button" class="keyword-chip" data-term="SEO">SEO</button>
+              <button type="button" class="keyword-chip" data-term="Machine Learning">ML</button>
+            </div>
+          </div>
+
+          <!-- Category Filter Dropdown -->
+          <div class="control-group">
+            <label for="categorySelect" class="control-label">Category</label>
+            <div class="select-wrapper">
+              <select id="categorySelect" class="filter-select">
+                <option value="all">All Categories</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Programming">Programming</option>
+                <option value="Graphic Design">Graphic Design</option>
+                <option value="Digital Marketing">Digital Marketing</option>
+                <option value="Data Science">Data Science</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Difficulty Filter Dropdown -->
+          <div class="control-group">
+            <label for="levelSelect" class="control-label">Difficulty Level</label>
+            <div class="select-wrapper">
+              <select id="levelSelect" class="filter-select">
+                <option value="all">All Levels</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Clear Filters Action -->
+          <div class="control-group btn-group">
+            <button type="button" id="clearFiltersBtn" class="clear-filters-btn"
+              title="Reset all filters and search input">
+              <span class="btn-icon" aria-hidden="true">&#8635;</span>
+              <span>Clear Filters</span>
+            </button>
+          </div>
+
+        </form>
+      </section>
+
+      <!-- Results Information Bar -->
+      <section class="results-info-bar" aria-label="Search and Filter Results Information">
+        <div class="results-meta">
+          <p id="resultsCount" class="results-count" aria-live="polite">Showing courses...</p>
+          <div id="activeFiltersBadgeArea" class="active-filters-area hidden">
+            <!-- Active filter chips will appear here dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Course Cards Grid -->
+      <section class="course-grid-section" aria-label="Course Listings">
+        <div id="coursesGrid" class="course-grid">
+          <!-- Course cards generated dynamically via JavaScript -->
+        </div>
+
+        <!-- Friendly No-Results State -->
+        <div id="noResultsState" class="no-results-state hidden" aria-live="polite">
+          <div class="no-results-illustration" aria-hidden="true">
+            <div class="illustration-circle">
+              <span class="illustration-icon">&#128270;</span>
+            </div>
+          </div>
+          <h2 class="no-results-title">No matching courses found</h2>
+          <p class="no-results-message">
+            We couldn't find any courses matching your current search or filter criteria. Try adjusting your keywords,
+            selecting different options, or clearing all filters.
+          </p>
+          <button type="button" id="noResultsResetBtn" class="reset-prompt-btn">
+            Reset All Filters
+          </button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Interactive Course Quick Details Modal -->
+  <div id="courseModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-container">
+      <button type="button" id="modalCloseBtn" class="modal-close-btn"
+        aria-label="Close course details">&times;</button>
+
+      <div class="modal-header">
+        <div id="modalVisualBanner" class="modal-visual-banner">
+          <span id="modalVisualIcon" class="modal-visual-icon">🌐</span>
+        </div>
+        <div class="modal-title-area">
+          <div class="modal-badges">
+            <span id="modalCategoryBadge" class="category-badge">Category</span>
+            <span id="modalLevelBadge" class="level-badge">Level</span>
+          </div>
+          <h2 id="modalTitle" class="modal-title">Course Title</h2>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <p id="modalDescription" class="modal-description">Course description will appear here.</p>
+
+        <div class="modal-specs-grid">
+          <div class="spec-card">
+            <span class="spec-icon">&#9201;</span>
+            <div class="spec-info">
+              <span class="spec-label">Duration</span>
+              <strong id="modalDuration" class="spec-value">4 Weeks</strong>
+            </div>
+          </div>
+          <div class="spec-card">
+            <span class="spec-icon">&#128188;</span>
+            <div class="spec-info">
+              <span class="spec-label">Department</span>
+              <strong class="spec-value">YSSE IT Wing</strong>
+            </div>
+          </div>
+          <div class="spec-card">
+            <span class="spec-icon">&#127891;</span>
+            <div class="spec-info">
+              <span class="spec-label">Certification</span>
+              <strong class="spec-value">Certificate of Completion</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-keywords-section">
+          <h4 class="keywords-heading">Curriculum Topics &amp; Skills Covered:</h4>
+          <div id="modalKeywordsList" class="modal-keywords-tags"></div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" id="modalBookmarkBtn" class="modal-bookmark-btn">
+          <span class="bookmark-star">&#9734;</span> <span>Save Course</span>
+        </button>
+        <button type="button" id="modalEnrollBtn" class="modal-action-btn">
+          Start Learning Now &rarr;
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toastNotification" class="toast-notification hidden" role="status" aria-live="polite">
+    <span id="toastMessage">Notification message</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-col brand-col">
+          <div class="footer-logo">
+            <span class="footer-logo-badge">YSSE</span>
+            <span class="footer-logo-title">Academy</span>
+          </div>
+          <p class="footer-tagline">
+            Youth School for Social Entrepreneurs &bull; Stage of Innovation.
+            Bridging economic and technological barriers through accessible education and mentorship.
+          </p>
+          <a href="https://ysseglobal.org/" target="_blank" rel="noopener noreferrer" class="footer-link-external">
+            Official Organization Portal &rarr;
+          </a>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Learning Tracks</h4>
+          <ul class="footer-links-list">
+            <li><a href="#" class="footer-track-filter" data-category="Web Development">Web Development</a></li>
+            <li><a href="#" class="footer-track-filter" data-category="Programming">Programming &amp; Software</a></li>
+            <li><a href="#" class="footer-track-filter" data-category="Data Science">Data Science &amp; AI</a></li>
+            <li><a href="#" class="footer-track-filter" data-category="Graphic Design">UI/UX &amp; Design</a></li>
+            <li><a href="#" class="footer-track-filter" data-category="Digital Marketing">Digital Marketing</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Department &amp; Wing</h4>
+          <p class="footer-col-text">
+            <strong>IT Department</strong><br>
+            Web Development &amp; CMS Wing<br>
+        </div>
+
+        <div class="footer-bottom">
+          <p class="footer-copy">
+            &copy; 2026 Youth School for Social Entrepreneurs (YSSE). All rights reserved.
+          </p>
+          <p class="footer-sub">
+            Built with care for YSSE IT Department &bull; Stage of Innovation
+          </p>
+        </div>
+      </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+
+</html>
